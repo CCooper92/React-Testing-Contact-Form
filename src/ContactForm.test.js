@@ -14,21 +14,26 @@ test("form is filled out and submit adds users information", () => {
     render (<ContactForm />)
 
     //query for all inputs
-    //const emailInput = screen.getByLabelText(/email/i);
-    const firstNameInput = screen.findByLabelText(/first name/i);
-    const lastNameInput = screen.queryByLabelText(/last name/i);
-    const emailInput = screen.queryByLabelText(/email/i);
-    const messageInput = screen.getByLabelText(/message/i);
+    const firstNameInput = screen.getByPlaceholderText(/edd/i);
+    const lastNameInput = screen.getByPlaceholderText(/burke/i);
+    const emailInput = screen.getByPlaceholderText(/bluebill1049@hotmail.com/i);
+    const messageInput = screen.queryByLabelText(/message/i);
+
+    
+    
+   
 
 
     //type into inputs
-    // userEvent.type(firstNameInput, "Edd");
-    // userEvent.type(firstNameInput, "Edd");
-    userEvent.type(lastNameInput, "Cooper");
+    userEvent.type(firstNameInput, "edd");
+    userEvent.type(lastNameInput, "burke");
+    userEvent.type(emailInput, "bluebill1049@hotmail.com");
     userEvent.type(messageInput, "testing");
+
+    expect(firstNameInput).toHaveValue('edd')
     
     //negative assertion
-
+    
 
     //query for the button
     const button = screen.getByRole("button", { name: /submit/i });
@@ -40,11 +45,12 @@ test("form is filled out and submit adds users information", () => {
   
 
     //query for the text "Courtney"
-    
+    const eddText = screen.queryByText(/edd/i)
 
     //assert
-
-})
+    expect.objectContaining({firstName: /edd/i, lastName: /burke/i, email: /bluebill1049@hotmail.com/i, message: /testing/i});
+    
+});
 
 
 
