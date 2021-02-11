@@ -15,7 +15,7 @@ test("form is filled out and submit adds users information", () => {
 
     //query for all inputs
     //const emailInput = screen.getByLabelText(/email/i);
-    const firstNameInput = screen.queryByLabelText(/first name/i);
+    const firstNameInput = screen.findByLabelText(/first name/i);
     const lastNameInput = screen.queryByLabelText(/last name/i);
     const emailInput = screen.queryByLabelText(/email/i);
     const messageInput = screen.getByLabelText(/message/i);
@@ -34,16 +34,16 @@ test("form is filled out and submit adds users information", () => {
     const button = screen.getByRole("button", { name: /submit/i });
 
     //click the button
-
-        // userEvent.click(button);
+    userEvent.click(button);
     
  
   
 
-    //query for the test "Courtney"
-
+    //query for the text "Courtney"
+    
 
     //assert
+
 })
 
 
